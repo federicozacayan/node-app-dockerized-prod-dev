@@ -1,0 +1,21 @@
+version: "3"
+
+services:
+  node-app:
+    build: .
+    ports:
+      - "3000:4000"
+    volumes:
+      - ./:/app:ro #ro = read only
+      - /app/node_modules # to avoid copy this folder
+    # environment:
+    #   - PORT=4000
+    env_file:
+      - ./.env
+
+# docker-compose up -d --build // --build to force rebuild
+# docker-compose down -v //to delet the volumes
+# docker ps -a
+# docker images
+# docker volumes ???
+# docker exec -it IMAGE_NAME bash
